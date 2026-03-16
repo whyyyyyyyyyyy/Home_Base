@@ -1,0 +1,13 @@
+{
+  "name": "home-base",
+  "version": "1.0.0",
+  "description": "Rapids Riverside Bar & Grill website",
+  "scripts": {
+    "lint": "htmlhint \"**/*.html\" --ignore \".git/**\"",
+    "test": "html-validate \"*.html\" \"menu/*.html\""
+  },
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "html-validate": "^9.0.0"
+  }
+}
