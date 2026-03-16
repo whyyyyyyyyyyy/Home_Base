@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Rapids Riverside Bar &amp; Grill</title>
+  <meta name="description" content="Photo gallery of food, drinks, and the bar at Rapids Riverside Bar & Grill in South Range, WI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1B4332', 'forest-dark': '#0F2B1F', 'forest-light': '#2D6A4F',
+            amber: '#D97706', 'amber-light': '#F59E0B', cream: '#FFFBF5', 'cream-dark': '#F5EDD8',
+          },
+          fontFamily: { heading: ['"Playfair Display"', 'serif'], body: ['Lato', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Lato', sans-serif; background-color: #FFFBF5; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    /* Lightbox */
+    .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+  </style>
+</head>
+<body class="font-body text-gray-800">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-forest shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between py-3 border-b border-forest-light">
+        <div class="hidden md:flex items-center gap-4 text-cream text-sm">
+          <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors">📍 South Range, WI</a>
+          <span class="text-forest-light">|</span>
+          <a href="tel:7153986898" class="hover:text-amber transition-colors">📞 (715) 398-6898</a>
+        </div>
+        <a href="index.html" class="flex flex-col items-center text-center mx-auto md:mx-0">
+          <span class="font-heading text-cream text-2xl md:text-3xl font-black leading-tight tracking-wide">Rapids Riverside</span>
+          <span class="font-heading text-amber text-sm md:text-base font-bold tracking-widest uppercase">Bar &amp; Grill</span>
+        </a>
+        <div class="hidden md:block w-24"></div>
+        <button id="menu-toggle" class="md:hidden text-cream p-2 ml-auto" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav id="main-nav" class="hidden md:flex justify-center items-center gap-1 py-2">
+        <a href="index.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Home</a>
+        <div class="relative has-dropdown">
+          <a href="menu/index.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">Menu <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="menu/lunch-dinner.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Lunch &amp; Dinner</a>
+            <a href="menu/breakfast.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Breakfast</a>
+            <a href="menu/daily-specials.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Daily Specials</a>
+            <a href="menu/bar.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Bar Menu</a>
+          </div>
+        </div>
+        <div class="relative has-dropdown">
+          <a href="catering.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">Catering <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="catering.html#catering-menu" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Catering Menu</a>
+            <a href="catering.html#store-pickup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Store Pickup</a>
+            <a href="catering.html#delivery-setup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Delivery &amp; Setup</a>
+          </div>
+        </div>
+        <a href="banquets.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Banquets</a>
+        <a href="gallery.html" class="px-4 py-2 text-amber font-bold text-sm uppercase tracking-wider">Gallery</a>
+        <a href="contact.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Contact</a>
+      </nav>
+      <nav id="mobile-nav" class="hidden md:hidden pb-4">
+        <a href="index.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Home</a>
+        <a href="menu/index.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Menu</a>
+        <a href="catering.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Catering</a>
+        <a href="banquets.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Banquets</a>
+        <a href="gallery.html" class="block py-2 px-4 text-amber font-bold uppercase text-sm border-b border-forest-light">Gallery</a>
+        <a href="contact.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="bg-forest py-14 text-center">
+    <p class="text-amber font-bold uppercase tracking-widest text-sm mb-2">Cheers to Great Food &amp; Cold Drinks</p>
+    <h1 class="font-heading text-cream text-4xl md:text-5xl font-black mb-3">Photo Gallery</h1>
+    <p class="text-gray-300 max-w-lg mx-auto">A look at the food, drinks, and atmosphere at Rapids Riverside. Click any photo to view full size.</p>
+  </section>
+
+  <!-- GALLERY -->
+  <main class="py-12 md:py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=90" data-alt="Burgers at Rapids Riverside">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="Burgers at Rapids Riverside" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&q=90" data-alt="Homemade pizza">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80" alt="Homemade pizza" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=1200&q=90" data-alt="Wings">
+          <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&q=80" alt="Wings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1600628421055-4d30de868b8f?w=1200&q=90" data-alt="Giant soft pretzel">
+          <img src="https://images.unsplash.com/photo-1600628421055-4d30de868b8f?w=500&q=80" alt="Giant soft pretzel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=1200&q=90" data-alt="Mac and cheese">
+          <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=500&q=80" alt="Mac and cheese" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1200&q=90" data-alt="BBQ catering spread">
+          <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&q=80" alt="BBQ catering spread" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=1200&q=90" data-alt="Cocktails at the bar">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&q=80" alt="Cocktails at the bar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=90" data-alt="Mexican fiesta tacos">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80" alt="Mexican fiesta tacos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1200&q=90" data-alt="Breakfast skillet">
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=500&q=80" alt="Breakfast skillet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=1200&q=90" data-alt="Loaded burger">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&q=80" alt="Loaded burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200&q=90" data-alt="Bourbon selection">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80" alt="Bourbon selection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+        <button class="gallery-item overflow-hidden rounded-sm aspect-square group" data-src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=90" data-alt="Smoked BBQ ribs">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&q=80" alt="Smoked BBQ ribs" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </button>
+
+      </div>
+
+      <p class="text-gray-500 text-sm text-center mt-8">
+        Follow us on <a href="https://www.facebook.com/RapidsRiverside" target="_blank" rel="noopener" class="text-forest font-bold hover:text-amber transition-colors">Facebook</a> for the latest photos and updates.
+      </p>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button class="absolute top-4 right-6 text-white text-4xl font-bold hover:text-amber transition-colors z-10" id="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="" class="lightbox-img" id="lightbox-img">
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-forest-dark text-gray-300 pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Contact</h3>
+          <address class="not-italic text-sm leading-relaxed">
+            <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors block mb-3">4385 County Rd U<br>South Range, WI 54874</a>
+            <a href="tel:7153986898" class="hover:text-amber transition-colors block">(715) 398-6898</a>
+          </address>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Hours</h3>
+          <ul class="text-sm space-y-2">
+            <li><span class="text-gray-400">Mon – Thu</span><br>4:00 PM – 11:00 PM</li>
+            <li><span class="text-gray-400">Friday</span><br>10:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Saturday</span><br>8:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Sunday</span><br>8:00 AM – 11:00 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Menu</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="menu/breakfast.html" class="hover:text-amber transition-colors">Breakfast</a></li>
+            <li><a href="menu/lunch-dinner.html" class="hover:text-amber transition-colors">Lunch &amp; Dinner</a></li>
+            <li><a href="menu/daily-specials.html" class="hover:text-amber transition-colors">Daily Specials</a></li>
+            <li><a href="menu/bar.html" class="hover:text-amber transition-colors">Bar Menu</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Explore</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="index.html" class="hover:text-amber transition-colors">Home</a></li>
+            <li><a href="catering.html" class="hover:text-amber transition-colors">Catering</a></li>
+            <li><a href="banquets.html" class="hover:text-amber transition-colors">Banquets</a></li>
+            <li><a href="gallery.html" class="hover:text-amber transition-colors">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-amber transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-forest-light pt-6 text-center text-xs text-gray-500">
+        <p>&copy; <span id="year"></span> Rapids Riverside Bar &amp; Grill. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    toggle.addEventListener('click', function () {
+      const isOpen = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.gallery-item').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lightboxImg.src = btn.dataset.src;
+        lightboxImg.alt = btn.dataset.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

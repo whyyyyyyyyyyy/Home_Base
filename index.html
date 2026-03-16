@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapids Riverside Bar &amp; Grill | South Range, WI</title>
+  <meta name="description" content="South Range's favorite bar &amp; grill. Burgers, pizza, wings, smoked BBQ catering, full bourbon bar, patio seating, and live sports. Open 7 days a week.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1B4332',
+            'forest-dark': '#0F2B1F',
+            'forest-light': '#2D6A4F',
+            amber: '#D97706',
+            'amber-light': '#F59E0B',
+            cream: '#FFFBF5',
+            'cream-dark': '#F5EDD8',
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['Lato', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Lato', sans-serif; background-color: #FFFBF5; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* Hero slider */
+    .hero-slide { position: absolute; inset: 0; opacity: 0; animation: heroFade 10s infinite; }
+    .hero-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-slide:nth-child(2) { animation-delay: 5s; }
+    @keyframes heroFade {
+      0%, 5%   { opacity: 0; }
+      10%, 45% { opacity: 1; }
+      50%, 100%{ opacity: 0; }
+    }
+
+    /* Sticky header */
+    .site-header { position: sticky; top: 0; z-index: 50; }
+
+    /* Nav dropdown */
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown:focus-within .dropdown-menu { display: block; }
+
+    /* Daily specials scroll */
+    .specials-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
+    .specials-track::-webkit-scrollbar { height: 4px; }
+    .specials-track::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 2px; }
+    .specials-track::-webkit-scrollbar-thumb { background: #1B4332; border-radius: 2px; }
+    .special-card { flex: 0 0 160px; scroll-snap-align: start; }
+
+    @media (min-width: 768px) {
+      .specials-track { flex-wrap: nowrap; justify-content: space-between; overflow-x: visible; }
+      .special-card { flex: 1; }
+    }
+  </style>
+</head>
+<body class="font-body text-gray-800">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header bg-forest shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Top bar: logo centered + contact strip -->
+      <div class="flex items-center justify-between py-3 border-b border-forest-light">
+        <!-- Contact left -->
+        <div class="hidden md:flex items-center gap-4 text-cream text-sm">
+          <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors">
+            📍 South Range, WI
+          </a>
+          <span class="text-forest-light">|</span>
+          <a href="tel:7153986898" class="hover:text-amber transition-colors">
+            📞 (715) 398-6898
+          </a>
+        </div>
+        <!-- Logo center -->
+        <a href="index.html" class="flex flex-col items-center text-center mx-auto md:mx-0">
+          <span class="font-heading text-cream text-2xl md:text-3xl font-black leading-tight tracking-wide">Rapids Riverside</span>
+          <span class="font-heading text-amber text-sm md:text-base font-bold tracking-widest uppercase">Bar &amp; Grill</span>
+        </a>
+        <!-- Social right -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="https://www.facebook.com/RapidsRiverside" target="_blank" rel="noopener" aria-label="Facebook" class="text-cream hover:text-amber transition-colors text-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+        <!-- Mobile hamburger -->
+        <button id="menu-toggle" class="md:hidden text-cream p-2 ml-auto" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav id="main-nav" class="hidden md:flex justify-center items-center gap-1 py-2" aria-label="Main navigation">
+        <a href="index.html" class="px-4 py-2 text-amber font-bold text-sm uppercase tracking-wider hover:text-cream transition-colors">Home</a>
+
+        <div class="relative has-dropdown">
+          <a href="menu/index.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">
+            Menu <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="menu/lunch-dinner.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Lunch &amp; Dinner</a>
+            <a href="menu/breakfast.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Breakfast</a>
+            <a href="menu/daily-specials.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Daily Specials</a>
+            <a href="menu/bar.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Bar Menu</a>
+          </div>
+        </div>
+
+        <div class="relative has-dropdown">
+          <a href="catering.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">
+            Catering <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="catering.html#catering-menu" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Catering Menu</a>
+            <a href="catering.html#store-pickup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Store Pickup</a>
+            <a href="catering.html#delivery-setup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Delivery &amp; Setup</a>
+          </div>
+        </div>
+
+        <a href="banquets.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Banquets</a>
+        <a href="gallery.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Gallery</a>
+        <a href="contact.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Contact</a>
+      </nav>
+
+      <!-- Mobile Nav (hidden by default) -->
+      <nav id="mobile-nav" class="hidden md:hidden pb-4" aria-label="Mobile navigation">
+        <a href="index.html" class="block py-2 px-4 text-amber font-bold uppercase text-sm border-b border-forest-light">Home</a>
+        <div>
+          <button class="mobile-accordion w-full text-left py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light flex justify-between items-center" aria-expanded="false">
+            Menu <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="mobile-sub hidden bg-forest-dark">
+            <a href="menu/lunch-dinner.html" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Lunch &amp; Dinner</a>
+            <a href="menu/breakfast.html" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Breakfast</a>
+            <a href="menu/daily-specials.html" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Daily Specials</a>
+            <a href="menu/bar.html" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Bar Menu</a>
+          </div>
+        </div>
+        <div>
+          <button class="mobile-accordion w-full text-left py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light flex justify-between items-center" aria-expanded="false">
+            Catering <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="mobile-sub hidden bg-forest-dark">
+            <a href="catering.html#catering-menu" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Catering Menu</a>
+            <a href="catering.html#store-pickup" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Store Pickup</a>
+            <a href="catering.html#delivery-setup" class="block py-2 px-8 text-cream text-sm hover:text-amber border-b border-forest-light">Delivery &amp; Setup</a>
+          </div>
+        </div>
+        <a href="banquets.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Banquets</a>
+        <a href="gallery.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Gallery</a>
+        <a href="contact.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="relative h-screen min-h-96 overflow-hidden" aria-label="Featured promotions">
+      <!-- Slide 1: Pizza -->
+      <div class="hero-slide" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1600&q=80" alt="Homemade pizza" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+      </div>
+      <!-- Slide 2: BBQ Catering -->
+      <div class="hero-slide" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1600&q=80" alt="Smoked BBQ catering" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+      </div>
+      <!-- Hero content (always visible) -->
+      <div class="relative z-10 h-full flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+          <div class="max-w-xl">
+            <p class="text-amber font-bold uppercase tracking-widest text-sm md:text-base mb-3">South Range, Wisconsin</p>
+            <h1 class="font-heading text-white text-4xl md:text-6xl font-black leading-tight mb-6 uppercase">
+              Real Food.<br>Cold Drinks.<br>Good Times.
+            </h1>
+            <p class="text-gray-200 text-lg mb-8 max-w-md">
+              Your neighborhood bar &amp; grill for burgers, pizza, wings, weekend breakfast, and smoked BBQ catering.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="menu/index.html" class="bg-amber hover:bg-amber-light text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+                View Menu
+              </a>
+              <a href="catering.html" class="border-2 border-amber text-amber hover:bg-amber hover:text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+                Catering Menu
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="py-16 md:py-24 bg-cream">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Image -->
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80"
+                 alt="Delectable burger and cocktail at Rapids Riverside Bar & Grill"
+                 class="w-full h-80 md:h-96 object-cover rounded-sm shadow-xl">
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-amber hidden md:block"></div>
+          </div>
+          <!-- Text -->
+          <div>
+            <p class="text-amber font-bold uppercase tracking-widest text-sm mb-3">Best Bar &amp; Grill in South Range, WI</p>
+            <h2 class="font-heading text-forest text-3xl md:text-4xl font-bold mb-6 leading-tight">
+              Burgers Worth Craving, Drinks Worth Savoring
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+              Whether you're stopping in for a creative cocktail after work, gathering with friends over wood-fired pizza, or catching the game at our full-size bar — Rapids Riverside is where South Range comes to eat, drink, and unwind.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-8">
+              Join us for breakfast on weekends, lunch and dinner all week, and don't miss our rotating daily specials. Patio seating available, live sports always on, and our in-house smoked BBQ is the talk of the Northwoods.
+            </p>
+            <div class="flex flex-wrap gap-6 text-sm">
+              <div class="flex items-center gap-2 text-forest font-bold">
+                <span class="w-2 h-2 bg-amber rounded-full"></span> Full-Size Bar
+              </div>
+              <div class="flex items-center gap-2 text-forest font-bold">
+                <span class="w-2 h-2 bg-amber rounded-full"></span> Patio Seating
+              </div>
+              <div class="flex items-center gap-2 text-forest font-bold">
+                <span class="w-2 h-2 bg-amber rounded-full"></span> Live Sports
+              </div>
+              <div class="flex items-center gap-2 text-forest font-bold">
+                <span class="w-2 h-2 bg-amber rounded-full"></span> Smoked BBQ Catering
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3 FEATURE CARDS ===== -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- Card 1: Lunch & Dinner -->
+          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
+            <div class="overflow-hidden h-56 relative">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80"
+                   alt="Burgers and lunch fare"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Lunch &amp; Dinner</p>
+              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Burgers &amp; More</h3>
+              <p class="text-gray-500 text-sm flex-1 mb-5">Handcrafted burgers, loaded sandwiches, hand-tossed pizza, wings, and appetizers. Made fresh every day.</p>
+              <a href="menu/lunch-dinner.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+                View Menu
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: Breakfast -->
+          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
+            <div class="overflow-hidden h-56 relative">
+              <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80"
+                   alt="Breakfast skillet and eggs"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Saturday &amp; Sunday</p>
+              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Weekend Breakfast</h3>
+              <p class="text-gray-500 text-sm flex-1 mb-5">Sizzling skillets, build-your-own omelets, classic breakfast plates — plus Bloody Marys and mimosas.</p>
+              <a href="menu/breakfast.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+                Breakfast Menu
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Bar -->
+          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
+            <div class="overflow-hidden h-56 relative">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80"
+                   alt="Bourbon and cocktails at the bar"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Full Bar</p>
+              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Barrel to Bottle</h3>
+              <p class="text-gray-500 text-sm flex-1 mb-5">Extensive bourbon selection, craft beers, creative cocktails, wine, and rotating daily drink specials.</p>
+              <a href="menu/bar.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+                Bourbon &amp; More
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CATERING PROMO ===== -->
+    <section class="py-20 bg-forest-dark relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80" alt="" class="w-full h-full object-cover">
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl">
+          <p class="text-amber font-bold uppercase tracking-widest text-sm mb-3">Best Caterer in Northern Wisconsin</p>
+          <h2 class="font-heading text-cream text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            Fire Up the Flavor!<br>BBQ Catering by Rapids Riverside
+          </h2>
+          <p class="text-gray-300 text-lg leading-relaxed mb-8">
+            Bring the BBQ to your next event. Our smoked in-house buffets feature fall-off-the-bone ribs, pulled pork, slow-smoked brisket, award-winning chicken, burgers, and brats — the talk of every party in the Northwoods. Available for pickup or full-service delivery.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="catering.html#catering-menu" class="bg-amber hover:bg-amber-light text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+              Catering Menu
+            </a>
+            <a href="contact.html" class="border-2 border-cream text-cream hover:bg-cream hover:text-forest font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DAILY SPECIALS ===== -->
+    <section class="py-16 md:py-24 bg-cream-dark">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-amber font-bold uppercase tracking-widest text-sm mb-2">Weekly Pub Food Favorites</p>
+          <h2 class="font-heading text-forest text-3xl md:text-4xl font-bold mb-4">Daily Specials</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            From wood-fired pizza and Coney dogs to Mexican Fiesta Tuesdays, Wing Night, and the legendary Friday Fish Fry — every day of the week brings something to look forward to.
+          </p>
+        </div>
+        <div class="specials-track">
+          <!-- Monday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80" alt="Pizza Monday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Pizza &amp; Coney Dogs</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Monday</p>
+            </div>
+          </div>
+          <!-- Tuesday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=80" alt="Mexican Fiesta Tuesday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Mexican Fiesta</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Tuesday</p>
+            </div>
+          </div>
+          <!-- Wednesday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&q=80" alt="Wing Night Wednesday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Wing Night</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Wednesday</p>
+            </div>
+          </div>
+          <!-- Thursday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80" alt="Locals Night Thursday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Locals Night</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Thursday</p>
+            </div>
+          </div>
+          <!-- Friday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=400&q=80" alt="Fish Fry Friday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Fish Fry</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Friday</p>
+            </div>
+          </div>
+          <!-- Saturday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="Date Night Saturday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Date Night</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Saturday</p>
+            </div>
+          </div>
+          <!-- Sunday -->
+          <div class="special-card bg-white rounded-sm shadow overflow-hidden">
+            <div class="h-36 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="Family Fun Day Sunday" class="w-full h-full object-cover">
+            </div>
+            <div class="p-3 text-center">
+              <p class="font-heading text-forest text-lg font-bold leading-tight">Family Fun Day</p>
+              <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Sunday</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a href="menu/daily-specials.html" class="inline-block bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider px-8 py-3 transition-colors">
+            View All Daily Specials
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIQUOR STORE ===== -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text left -->
+          <div>
+            <p class="text-amber font-bold uppercase tracking-widest text-sm mb-3">On-Site</p>
+            <h2 class="font-heading text-forest text-3xl md:text-4xl font-bold mb-6">Liquor Store On-Site</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+              Stop in for a huge selection of bourbon, beer, and ready-to-drink margaritas and seltzers — all available to take home.
+            </p>
+            <p class="text-forest font-bold text-xl mb-6">🍺 Kegs Available!</p>
+            <p class="text-gray-500 text-sm mb-8">Liquor store sales available until 9:00 PM daily.</p>
+            <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener"
+               class="inline-block bg-amber hover:bg-amber-light text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+              Get Directions
+            </a>
+          </div>
+          <!-- Image right -->
+          <div>
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80"
+                 alt="Bourbon and spirits selection at Rapids Riverside"
+                 class="w-full h-72 md:h-80 object-cover rounded-sm shadow-lg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY PREVIEW ===== -->
+    <section class="py-16 md:py-24 bg-cream">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10">
+          <p class="text-amber font-bold uppercase tracking-widest text-sm mb-2">Cheers to Great Food &amp; Cold Drinks</p>
+          <h2 class="font-heading text-forest text-3xl md:text-4xl font-bold mb-4">Photo Gallery</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            A glimpse of the food, drinks, and good times waiting for you at Rapids Riverside. Come see for yourself — we're open 7 days a week.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Burger at Rapids Riverside" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80" alt="Homemade pizza" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&q=80" alt="Wings" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1600628421055-4d30de868b8f?w=400&q=80" alt="Giant pretzel appetizer" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=400&q=80" alt="Mac and cheese" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="BBQ catering spread" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80" alt="Cocktails" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+          <a href="gallery.html" class="overflow-hidden rounded-sm block aspect-square">
+            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=400&q=80" alt="Nachos" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </a>
+        </div>
+        <div class="text-center mt-8">
+          <a href="gallery.html" class="inline-block border-2 border-forest text-forest hover:bg-forest hover:text-cream font-bold uppercase tracking-wider px-8 py-3 transition-colors">
+            View Full Gallery
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOCIAL CTA ===== -->
+    <section class="py-12 bg-forest text-center">
+      <div class="max-w-xl mx-auto px-6">
+        <h2 class="font-heading text-cream text-2xl md:text-3xl font-bold mb-3">Sip. Share. Smile.</h2>
+        <p class="text-gray-300 mb-6">Follow us on Facebook for daily specials, events, and updates.</p>
+        <a href="https://www.facebook.com/RapidsRiverside" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-3 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Follow Us on Facebook
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-forest-dark text-gray-300 pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+
+        <!-- Contact -->
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Contact</h3>
+          <address class="not-italic text-sm leading-relaxed">
+            <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors block mb-3">
+              4385 County Rd U<br>South Range, WI 54874
+            </a>
+            <a href="tel:7153986898" class="hover:text-amber transition-colors block mb-4">(715) 398-6898</a>
+          </address>
+          <a href="https://www.facebook.com/RapidsRiverside" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm hover:text-amber transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+        </div>
+
+        <!-- Hours -->
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Hours</h3>
+          <ul class="text-sm space-y-2">
+            <li><span class="text-gray-400">Mon – Thu</span><br>4:00 PM – 11:00 PM</li>
+            <li><span class="text-gray-400">Friday</span><br>10:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Saturday</span><br>8:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Sunday</span><br>8:00 AM – 11:00 PM</li>
+            <li class="text-xs text-gray-500 pt-2">Kitchen closes 2 hrs before bar.<br>Liquor store until 9:00 PM.</li>
+          </ul>
+        </div>
+
+        <!-- Menu -->
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Menu</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="menu/breakfast.html" class="hover:text-amber transition-colors">Breakfast</a></li>
+            <li><a href="menu/lunch-dinner.html" class="hover:text-amber transition-colors">Lunch &amp; Dinner</a></li>
+            <li><a href="menu/daily-specials.html" class="hover:text-amber transition-colors">Daily Specials</a></li>
+            <li><a href="menu/bar.html#bourbon-bar" class="hover:text-amber transition-colors">Bourbon Bar</a></li>
+            <li><a href="menu/bar.html#beer-wine-cocktails" class="hover:text-amber transition-colors">Beer, Wine &amp; Cocktails</a></li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Explore</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="index.html" class="hover:text-amber transition-colors">Home</a></li>
+            <li><a href="menu/index.html" class="hover:text-amber transition-colors">Menu</a></li>
+            <li><a href="catering.html" class="hover:text-amber transition-colors">Catering</a></li>
+            <li><a href="banquets.html" class="hover:text-amber transition-colors">Banquets</a></li>
+            <li><a href="gallery.html" class="hover:text-amber transition-colors">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-amber transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-forest-light pt-6 text-center text-xs text-gray-500">
+        <p>&copy; <span id="year"></span> Rapids Riverside Bar &amp; Grill. All rights reserved.</p>
+        <p class="mt-1">4385 County Rd U, South Range, WI 54874 &nbsp;|&nbsp; (715) 398-6898</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    toggle.addEventListener('click', function () {
+      const isOpen = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Mobile accordion submenus
+    document.querySelectorAll('.mobile-accordion').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const sub = btn.nextElementSibling;
+        const isOpen = !sub.classList.contains('hidden');
+        sub.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        const arrow = btn.querySelector('svg');
+        if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+      });
+    });
+  </script>
+
+</body>
+</html>

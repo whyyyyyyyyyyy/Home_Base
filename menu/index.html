@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Rapids Riverside Bar &amp; Grill</title>
+  <meta name="description" content="Explore the full menu at Rapids Riverside Bar & Grill in South Range, WI — lunch, dinner, breakfast, daily specials, and a full bourbon bar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1B4332', 'forest-dark': '#0F2B1F', 'forest-light': '#2D6A4F',
+            amber: '#D97706', 'amber-light': '#F59E0B', cream: '#FFFBF5', 'cream-dark': '#F5EDD8',
+          },
+          fontFamily: { heading: ['"Playfair Display"', 'serif'], body: ['Lato', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Lato', sans-serif; background-color: #FFFBF5; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+  </style>
+</head>
+<body class="font-body text-gray-800">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-forest shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between py-3 border-b border-forest-light">
+        <div class="hidden md:flex items-center gap-4 text-cream text-sm">
+          <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors">📍 South Range, WI</a>
+          <span class="text-forest-light">|</span>
+          <a href="tel:7153986898" class="hover:text-amber transition-colors">📞 (715) 398-6898</a>
+        </div>
+        <a href="../index.html" class="flex flex-col items-center text-center mx-auto md:mx-0">
+          <span class="font-heading text-cream text-2xl md:text-3xl font-black leading-tight tracking-wide">Rapids Riverside</span>
+          <span class="font-heading text-amber text-sm md:text-base font-bold tracking-widest uppercase">Bar &amp; Grill</span>
+        </a>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="https://www.facebook.com/RapidsRiverside" target="_blank" rel="noopener" aria-label="Facebook" class="text-cream hover:text-amber transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+        <button id="menu-toggle" class="md:hidden text-cream p-2 ml-auto" aria-label="Toggle menu" aria-expanded="false">
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav id="main-nav" class="hidden md:flex justify-center items-center gap-1 py-2">
+        <a href="../index.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Home</a>
+        <div class="relative has-dropdown">
+          <a href="index.html" class="px-4 py-2 text-amber font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">Menu <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="lunch-dinner.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Lunch &amp; Dinner</a>
+            <a href="breakfast.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Breakfast</a>
+            <a href="daily-specials.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Daily Specials</a>
+            <a href="bar.html" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Bar Menu</a>
+          </div>
+        </div>
+        <div class="relative has-dropdown">
+          <a href="../catering.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors flex items-center gap-1">Catering <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+          <div class="dropdown-menu hidden absolute top-full left-0 bg-forest-dark border border-forest-light rounded shadow-xl min-w-40 z-50 py-1">
+            <a href="../catering.html#catering-menu" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Catering Menu</a>
+            <a href="../catering.html#store-pickup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Store Pickup</a>
+            <a href="../catering.html#delivery-setup" class="block px-4 py-2 text-cream text-sm hover:bg-forest-light hover:text-amber transition-colors">Delivery &amp; Setup</a>
+          </div>
+        </div>
+        <a href="../banquets.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Banquets</a>
+        <a href="../gallery.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Gallery</a>
+        <a href="../contact.html" class="px-4 py-2 text-cream font-bold text-sm uppercase tracking-wider hover:text-amber transition-colors">Contact</a>
+      </nav>
+      <nav id="mobile-nav" class="hidden md:hidden pb-4">
+        <a href="../index.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Home</a>
+        <a href="index.html" class="block py-2 px-4 text-amber font-bold uppercase text-sm border-b border-forest-light">Menu</a>
+        <a href="lunch-dinner.html" class="block py-2 px-8 text-cream text-sm border-b border-forest-light hover:text-amber">Lunch &amp; Dinner</a>
+        <a href="breakfast.html" class="block py-2 px-8 text-cream text-sm border-b border-forest-light hover:text-amber">Breakfast</a>
+        <a href="daily-specials.html" class="block py-2 px-8 text-cream text-sm border-b border-forest-light hover:text-amber">Daily Specials</a>
+        <a href="bar.html" class="block py-2 px-8 text-cream text-sm border-b border-forest-light hover:text-amber">Bar Menu</a>
+        <a href="../catering.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Catering</a>
+        <a href="../banquets.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Banquets</a>
+        <a href="../gallery.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm border-b border-forest-light">Gallery</a>
+        <a href="../contact.html" class="block py-2 px-4 text-cream font-bold uppercase text-sm">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="bg-forest py-16 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <p class="text-amber font-bold uppercase tracking-widest text-sm mb-2">Rapids Riverside Bar &amp; Grill</p>
+      <h1 class="font-heading text-cream text-4xl md:text-5xl font-black mb-4">Our Menu</h1>
+      <p class="text-gray-300">From weekend breakfast to late-night drinks — there's always something delicious waiting for you.</p>
+    </div>
+  </section>
+
+  <!-- MENU CATEGORY CARDS -->
+  <main class="py-16 md:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <a href="lunch-dinner.html" class="group block bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Lunch and dinner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-forest/30"></div>
+          </div>
+          <div class="p-6">
+            <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Mon – Sun</p>
+            <h2 class="font-heading text-forest text-2xl font-bold mb-2">Lunch &amp; Dinner</h2>
+            <p class="text-gray-500 text-sm">Burgers, sandwiches, pizza, wings, and appetizers. Made fresh to order every day.</p>
+            <p class="mt-4 text-forest font-bold text-sm uppercase tracking-wider group-hover:text-amber transition-colors">View Menu →</p>
+          </div>
+        </a>
+
+        <a href="breakfast.html" class="group block bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80" alt="Breakfast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-forest/30"></div>
+          </div>
+          <div class="p-6">
+            <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Saturday &amp; Sunday</p>
+            <h2 class="font-heading text-forest text-2xl font-bold mb-2">Breakfast</h2>
+            <p class="text-gray-500 text-sm">Skillets, omelets, classic plates, Bloody Marys, and mimosas. Weekend mornings done right.</p>
+            <p class="mt-4 text-forest font-bold text-sm uppercase tracking-wider group-hover:text-amber transition-colors">View Menu →</p>
+          </div>
+        </a>
+
+        <a href="daily-specials.html" class="group block bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&q=80" alt="Daily specials" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-forest/30"></div>
+          </div>
+          <div class="p-6">
+            <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Every Day</p>
+            <h2 class="font-heading text-forest text-2xl font-bold mb-2">Daily Specials</h2>
+            <p class="text-gray-500 text-sm">Fish Fry Fridays, Wing Night, Mexican Fiesta Tuesdays, and more — every day of the week.</p>
+            <p class="mt-4 text-forest font-bold text-sm uppercase tracking-wider group-hover:text-amber transition-colors">View Specials →</p>
+          </div>
+        </a>
+
+        <a href="bar.html" class="group block bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80" alt="Bar menu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-forest/30"></div>
+          </div>
+          <div class="p-6">
+            <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Full Bar</p>
+            <h2 class="font-heading text-forest text-2xl font-bold mb-2">Bar Menu</h2>
+            <p class="text-gray-500 text-sm">Bourbon bar, craft beers, creative cocktails, wine, and daily drink specials.</p>
+            <p class="mt-4 text-forest font-bold text-sm uppercase tracking-wider group-hover:text-amber transition-colors">View Bar Menu →</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Hours reminder -->
+      <div class="mt-16 bg-forest text-cream rounded-sm p-8 text-center">
+        <h2 class="font-heading text-2xl font-bold mb-4">Hours of Operation</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-sm">
+          <div><p class="text-amber font-bold">Mon – Thu</p><p class="text-gray-300">4:00 PM – 11:00 PM</p></div>
+          <div><p class="text-amber font-bold">Friday</p><p class="text-gray-300">10:00 AM – 12:00 AM</p></div>
+          <div><p class="text-amber font-bold">Saturday</p><p class="text-gray-300">8:00 AM – 12:00 AM</p></div>
+          <div><p class="text-amber font-bold">Sunday</p><p class="text-gray-300">8:00 AM – 11:00 PM</p></div>
+        </div>
+        <p class="text-gray-400 text-xs mt-4">Kitchen stops serving 2 hours before close. Liquor store until 9:00 PM.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-forest-dark text-gray-300 pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Contact</h3>
+          <address class="not-italic text-sm leading-relaxed">
+            <a href="https://goo.gl/maps/5sA93ETAZ75ShGZq6" target="_blank" rel="noopener" class="hover:text-amber transition-colors block mb-3">4385 County Rd U<br>South Range, WI 54874</a>
+            <a href="tel:7153986898" class="hover:text-amber transition-colors block mb-4">(715) 398-6898</a>
+          </address>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Hours</h3>
+          <ul class="text-sm space-y-2">
+            <li><span class="text-gray-400">Mon – Thu</span><br>4:00 PM – 11:00 PM</li>
+            <li><span class="text-gray-400">Friday</span><br>10:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Saturday</span><br>8:00 AM – 12:00 AM</li>
+            <li><span class="text-gray-400">Sunday</span><br>8:00 AM – 11:00 PM</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Menu</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="breakfast.html" class="hover:text-amber transition-colors">Breakfast</a></li>
+            <li><a href="lunch-dinner.html" class="hover:text-amber transition-colors">Lunch &amp; Dinner</a></li>
+            <li><a href="daily-specials.html" class="hover:text-amber transition-colors">Daily Specials</a></li>
+            <li><a href="bar.html" class="hover:text-amber transition-colors">Bar Menu</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading text-cream text-lg font-bold mb-4 border-b border-forest-light pb-2">Explore</h3>
+          <ul class="text-sm space-y-2">
+            <li><a href="../index.html" class="hover:text-amber transition-colors">Home</a></li>
+            <li><a href="../catering.html" class="hover:text-amber transition-colors">Catering</a></li>
+            <li><a href="../banquets.html" class="hover:text-amber transition-colors">Banquets</a></li>
+            <li><a href="../gallery.html" class="hover:text-amber transition-colors">Gallery</a></li>
+            <li><a href="../contact.html" class="hover:text-amber transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-forest-light pt-6 text-center text-xs text-gray-500">
+        <p>&copy; <span id="year"></span> Rapids Riverside Bar &amp; Grill. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    toggle.addEventListener('click', function () {
+      const isOpen = !mobileNav.classList.contains('hidden');
+      mobileNav.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  </script>
+</body>
+</html>
