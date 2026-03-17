@@ -14,13 +14,13 @@
       theme: {
         extend: {
           colors: {
-            forest: '#1B4332',
-            'forest-dark': '#0F2B1F',
-            'forest-light': '#2D6A4F',
-            amber: '#D97706',
-            'amber-light': '#F59E0B',
-            cream: '#FFFBF5',
-            'cream-dark': '#F5EDD8',
+            forest: '#1e2e57',
+            'forest-dark': '#111e3a',
+            'forest-light': '#2a3f6f',
+            amber: '#d89441',
+            'amber-light': '#e8a84e',
+            cream: '#f4f6f9',
+            'cream-dark': '#e8edf5',
           },
           fontFamily: {
             heading: ['"Playfair Display"', 'serif'],
@@ -51,17 +51,17 @@
     .has-dropdown:hover .dropdown-menu,
     .has-dropdown:focus-within .dropdown-menu { display: block; }
 
-    /* Daily specials scroll */
-    .specials-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
-    .specials-track::-webkit-scrollbar { height: 4px; }
-    .specials-track::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 2px; }
-    .specials-track::-webkit-scrollbar-thumb { background: #1B4332; border-radius: 2px; }
-    .special-card { flex: 0 0 160px; scroll-snap-align: start; }
-
-    @media (min-width: 768px) {
-      .specials-track { flex-wrap: nowrap; justify-content: space-between; overflow-x: visible; }
-      .special-card { flex: 1; }
-    }
+    /* Daily specials carousel */
+    .specials-outer { position: relative; overflow: hidden; }
+    .specials-track { display: flex; gap: 1rem; transition: transform 0.4s ease; will-change: transform; }
+    .special-card { flex: 0 0 calc(33.333% - 0.67rem); }
+    @media (min-width: 1024px) { .special-card { flex: 0 0 calc(20% - 0.8rem); } }
+    @media (max-width: 639px) { .special-card { flex: 0 0 calc(100% - 0rem); } }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: #1e2e57; color: #fff; border: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+    .carousel-btn:hover { background: #d89441; }
+    .carousel-btn:disabled { opacity: 0.3; cursor: default; }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
   </style>
 </head>
 <body class="font-body text-gray-800">
@@ -204,12 +204,15 @@
     <section class="py-16 md:py-24 bg-cream">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-          <!-- Image -->
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80"
-                 alt="Delectable burger and cocktail at Rapids Riverside Bar & Grill"
-                 class="w-full h-80 md:h-96 object-cover rounded-sm shadow-xl">
-            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-amber hidden md:block"></div>
+          <!-- Overlapping photo collage -->
+          <div class="relative h-80 md:h-[420px]">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80"
+                 alt="Juicy burger at Rapids Riverside"
+                 class="absolute top-0 left-0 w-4/5 h-4/5 object-cover shadow-xl rounded-sm z-10">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80"
+                 alt="Cocktail at Rapids Riverside Bar"
+                 class="absolute bottom-0 right-0 w-2/5 h-2/5 object-cover shadow-xl rounded-sm z-20 border-4 border-white">
+            <div class="absolute bottom-4 left-4 w-16 h-16 bg-amber z-0 hidden md:block"></div>
           </div>
           <!-- Text -->
           <div>
@@ -248,54 +251,45 @@
         <div class="grid md:grid-cols-3 gap-6">
 
           <!-- Card 1: Lunch & Dinner -->
-          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
-            <div class="overflow-hidden h-56 relative">
-              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80"
-                   alt="Burgers and lunch fare"
-                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
-            </div>
-            <div class="p-6 flex flex-col flex-1">
-              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Lunch &amp; Dinner</p>
-              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Burgers &amp; More</h3>
-              <p class="text-gray-500 text-sm flex-1 mb-5">Handcrafted burgers, loaded sandwiches, hand-tossed pizza, wings, and appetizers. Made fresh every day.</p>
-              <a href="menu/lunch-dinner.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+          <div class="group relative overflow-hidden rounded-sm shadow-lg" style="height:380px">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=700&q=80"
+                 alt="Burgers and lunch fare"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Crave-able Burgers</p>
+              <h3 class="font-heading text-white text-3xl font-bold mb-4 leading-tight">Lunch &amp; Dinner</h3>
+              <a href="menu/lunch-dinner.html" class="inline-block border-2 border-white text-white hover:bg-white hover:text-forest font-bold uppercase tracking-wider text-sm text-center py-2 px-6 transition-colors w-full text-center">
                 View Menu
               </a>
             </div>
           </div>
 
           <!-- Card 2: Breakfast -->
-          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
-            <div class="overflow-hidden h-56 relative">
-              <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=80"
-                   alt="Breakfast skillet and eggs"
-                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
-            </div>
-            <div class="p-6 flex flex-col flex-1">
+          <div class="group relative overflow-hidden rounded-sm shadow-lg" style="height:380px">
+            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=700&q=80"
+                 alt="Breakfast skillet and eggs"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
               <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Saturday &amp; Sunday</p>
-              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Weekend Breakfast</h3>
-              <p class="text-gray-500 text-sm flex-1 mb-5">Sizzling skillets, build-your-own omelets, classic breakfast plates — plus Bloody Marys and mimosas.</p>
-              <a href="menu/breakfast.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+              <h3 class="font-heading text-white text-3xl font-bold mb-4 leading-tight">Breakfast</h3>
+              <a href="menu/breakfast.html" class="inline-block border-2 border-white text-white hover:bg-white hover:text-forest font-bold uppercase tracking-wider text-sm text-center py-2 px-6 transition-colors w-full text-center">
                 Breakfast Menu
               </a>
             </div>
           </div>
 
           <!-- Card 3: Bar -->
-          <div class="group overflow-hidden rounded-sm shadow-lg bg-white border border-gray-100 flex flex-col">
-            <div class="overflow-hidden h-56 relative">
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80"
-                   alt="Bourbon and cocktails at the bar"
-                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute inset-0 bg-forest/30 group-hover:bg-forest/10 transition-colors duration-300"></div>
-            </div>
-            <div class="p-6 flex flex-col flex-1">
-              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Full Bar</p>
-              <h3 class="font-heading text-forest text-2xl font-bold mb-3">Barrel to Bottle</h3>
-              <p class="text-gray-500 text-sm flex-1 mb-5">Extensive bourbon selection, craft beers, creative cocktails, wine, and rotating daily drink specials.</p>
-              <a href="menu/bar.html" class="mt-auto bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider text-sm text-center py-3 px-6 transition-colors">
+          <div class="group relative overflow-hidden rounded-sm shadow-lg" style="height:380px">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=700&q=80"
+                 alt="Bourbon and cocktails at the bar"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <p class="text-amber font-bold uppercase tracking-widest text-xs mb-1">Barrel to Bottle</p>
+              <h3 class="font-heading text-white text-3xl font-bold mb-4 leading-tight">Full Bar</h3>
+              <a href="menu/bar.html" class="inline-block border-2 border-white text-white hover:bg-white hover:text-forest font-bold uppercase tracking-wider text-sm text-center py-2 px-6 transition-colors w-full text-center">
                 Bourbon &amp; More
               </a>
             </div>
@@ -306,26 +300,30 @@
     </section>
 
     <!-- ===== CATERING PROMO ===== -->
-    <section class="py-20 bg-forest-dark relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80" alt="" class="w-full h-full object-cover">
-      </div>
-      <div class="relative z-10 max-w-7xl mx-auto px-6">
-        <div class="max-w-2xl">
-          <p class="text-amber font-bold uppercase tracking-widest text-sm mb-3">Best Caterer in Northern Wisconsin</p>
-          <h2 class="font-heading text-cream text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            Fire Up the Flavor!<br>BBQ Catering by Rapids Riverside
-          </h2>
-          <p class="text-gray-300 text-lg leading-relaxed mb-8">
-            Bring the BBQ to your next event. Our smoked in-house buffets feature fall-off-the-bone ribs, pulled pork, slow-smoked brisket, award-winning chicken, burgers, and brats — the talk of every party in the Northwoods. Available for pickup or full-service delivery.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="catering.html#catering-menu" class="bg-amber hover:bg-amber-light text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
-              Catering Menu
-            </a>
-            <a href="contact.html" class="border-2 border-cream text-cream hover:bg-cream hover:text-forest font-bold uppercase tracking-wider px-7 py-3 transition-colors">
-              Contact Us
-            </a>
+    <section class="bg-amber overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2">
+          <!-- Left: text on amber -->
+          <div class="py-16 px-8 md:px-12 flex flex-col justify-center">
+            <p class="text-forest font-bold uppercase tracking-widest text-sm mb-3">Best Caterer in Northern Wisconsin</p>
+            <h2 class="font-heading text-forest text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              Fire Up the Flavor!<br>BBQ Catering by Rapids Riverside
+            </h2>
+            <p class="text-forest/80 text-lg leading-relaxed mb-8">
+              Bring the BBQ to your next event. Our smoked in-house buffets feature fall-off-the-bone ribs, pulled pork, slow-smoked brisket, award-winning chicken, burgers, and brats — the talk of every party in the Northwoods. Available for pickup or full-service delivery.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="catering.html#catering-menu" class="border-2 border-forest text-forest hover:bg-forest hover:text-white font-bold uppercase tracking-wider px-7 py-3 transition-colors">
+                Catering Menu
+              </a>
+            </div>
+          </div>
+          <!-- Right: stacked food photos -->
+          <div class="relative hidden md:grid grid-rows-2" style="min-height:420px">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80"
+                 alt="Smoked BBQ ribs" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80"
+                 alt="Smoked catering spread" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
@@ -341,7 +339,14 @@
             From wood-fired pizza and Coney dogs to Mexican Fiesta Tuesdays, Wing Night, and the legendary Friday Fish Fry — every day of the week brings something to look forward to.
           </p>
         </div>
-        <div class="specials-track">
+        <div class="specials-outer px-8">
+          <button class="carousel-btn prev" id="specials-prev" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="carousel-btn next" id="specials-next" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        <div class="specials-track" id="specials-track">
           <!-- Monday -->
           <div class="special-card bg-white rounded-sm shadow overflow-hidden">
             <div class="h-36 overflow-hidden">
@@ -412,7 +417,8 @@
               <p class="text-amber font-bold text-xs uppercase tracking-wider mt-1">Sunday</p>
             </div>
           </div>
-        </div>
+        </div><!-- end specials-track -->
+        </div><!-- end specials-outer -->
         <div class="text-center mt-10">
           <a href="menu/daily-specials.html" class="inline-block bg-forest hover:bg-forest-light text-cream font-bold uppercase tracking-wider px-8 py-3 transition-colors">
             View All Daily Specials
@@ -592,6 +598,43 @@
       iconClose.classList.toggle('hidden');
       toggle.setAttribute('aria-expanded', String(!isOpen));
     });
+
+    // Daily specials carousel
+    (function () {
+      var track = document.getElementById('specials-track');
+      var prevBtn = document.getElementById('specials-prev');
+      var nextBtn = document.getElementById('specials-next');
+      if (!track) return;
+      var cards = track.querySelectorAll('.special-card');
+      var current = 0;
+
+      function visibleCount() {
+        if (window.innerWidth >= 1024) return 5;
+        if (window.innerWidth >= 640) return 3;
+        return 1;
+      }
+
+      function getCardWidth() {
+        if (!cards.length) return 0;
+        return cards[0].getBoundingClientRect().width + 16; // 16 = gap (1rem)
+      }
+
+      function maxIndex() {
+        return Math.max(0, cards.length - visibleCount());
+      }
+
+      function update() {
+        var offset = current * getCardWidth();
+        track.style.transform = 'translateX(-' + offset + 'px)';
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex();
+      }
+
+      prevBtn.addEventListener('click', function () { if (current > 0) { current--; update(); } });
+      nextBtn.addEventListener('click', function () { if (current < maxIndex()) { current++; update(); } });
+      window.addEventListener('resize', function () { current = Math.min(current, maxIndex()); update(); });
+      update();
+    })();
 
     // Mobile accordion submenus
     document.querySelectorAll('.mobile-accordion').forEach(function (btn) {
